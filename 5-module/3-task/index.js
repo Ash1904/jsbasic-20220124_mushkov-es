@@ -8,10 +8,10 @@ function initCarousel() {
     counter++;
     switch (counter) {
       case 2: 
-        carouse1Inner.style.transform = 'translateX(-500px)';
+        carouse1Inner.style.transform = 'translateX(-988px)';
       break;
       case 3:
-        carouse1Inner.style.transform = 'translateX(-1000px)'
+        carouse1Inner.style.transform = 'translateX(-988px)'
       break;
       case 4:
         carouse1Inner.style.transform = 'translateX(-1500px)';
