@@ -50,13 +50,19 @@ export default class StepSlider {
       }
       let value = 0
       const onMouseMove = (event) => {
-        let left = event.clientX - this.elem.getBoundingClientRect().left;//this свой контекст у функции
+        let left = event.clientX - this.elem.getBoundingClientRect().left;
         let leftRelative = left / this.elem.offsetWidth;
+        if (leftRelative < 0) {
+          leftRelative = 0;
+        }
+        if (leftRelative > 1) {
+          leftRelative = 1;
+        }
         let leftPercents = leftRelative * 100;
         let segments = this.data.steps - 1;
         let approximateValue = leftRelative * segments;
         value = Math.round(approximateValue);
-        moveAt(`${(value / (this.data.steps -1) * this.elem.offsetWidth)}px`, `${(value / (this.data.steps -1) * this.elem.offsetWidth)}px`, value)
+        moveAt(`${leftPercents}%`, `${leftPercents}%`, value)
         this.changeValue(value)
       }
       document.addEventListener('pointermove', onMouseMove)
@@ -77,7 +83,7 @@ export default class StepSlider {
 
   changeValue(value) {
     this.elem.querySelector('.slider__step-active').classList.remove('slider__step-active')
-    this.elem.querySelectorAll('span')[value].classList.add('slider__step-active')
+    this.elem.querySelectorAll('span')[value + 1].classList.add('slider__step-active')
     // this.elem.querySelector('.slider__thumb').style.left = `${value / (this.data.steps - 1) *100}%`
     // this.elem.querySelector('.slider__value').innerHTML = value;
     // this.elem.querySelector('.slider__progress').style.width = `${value / (this.data.steps - 1) *100}%`

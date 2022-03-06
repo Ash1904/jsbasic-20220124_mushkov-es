@@ -70,17 +70,17 @@ export default class RibbonMenu {
   onClick() {
     const link = this.elem.querySelectorAll('.ribbon__item');
     link.forEach((element, index) => {
-      element.addEventListener('click', event => this.createEvent(event, index))
+      element.addEventListener('click', event => this.createEvent(index))
     }) 
   }
-  createEvent = (event, index) => {
-    if (event.target.closest('A')) {
+  createEvent = (index) => {
+    
     const categories = new CustomEvent('ribbon-select', { 
         detail: this.categories[index].id, 
         bubbles: true 
       })
       this.elem.dispatchEvent(categories)
-    }
+    
   }
   
 }

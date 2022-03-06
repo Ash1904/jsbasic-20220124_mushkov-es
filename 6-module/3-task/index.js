@@ -55,7 +55,7 @@ export default class Carousel {
 
     arrowRight.addEventListener('click', () => {
       counter++
-      carouse1Inner.style.transform = `translateX(${counter*(-(carouse1Inner.offsetWidth))}px)`
+      carouse1Inner.style.transform = `translateX(${counter * (-500)}px)`
       if (counter > 0) arrowLeft.style.display = 'block'
       if (counter === this.slide.length - 1) {
         arrowLeft.style.display = 'block'
@@ -65,7 +65,7 @@ export default class Carousel {
     })
     arrowLeft.addEventListener('click', () => {
       counter--
-      carouse1Inner.style.transform = `translateX(${counter*(carouse1Inner.offsetWidth)}px)`
+      carouse1Inner.style.transform = `translateX(${counter*(-500)}px)`
       if (counter < this.slide.length) arrowRight.style.display = 'block'
       if (counter === 0) {
         arrowLeft.style.display = 'none'
