@@ -22,13 +22,12 @@ export default class ProductCard {
     }
     createEvent = (event) => {
         const target = event.target.closest('img')
-        if (target) {
             const productAdd = new CustomEvent('product-add', {
                 detail:this.product.id,
                 bubbles: true
             });
             this.elem.dispatchEvent(productAdd);
-        }
+        
 
 
     }

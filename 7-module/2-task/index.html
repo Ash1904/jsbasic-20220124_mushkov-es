@@ -7,7 +7,7 @@
   <title>Бангкок Экспресс: Модальное окно</title>
 
   <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="/assets/styles/common.css" />
+  <link rel="stylesheet" href="../../assets/styles/common.css" />
 </head>
 
 <body>
@@ -17,9 +17,9 @@
 
     window.openModal = () => {
       let modal = new Modal();
+      console.log(modal)
       modal.setTitle('Modal Title');
-      modal.setBody(createElement('<div>Тело модального окна</div>'));
-
+      modal.setBody(('<div>Тело модального окна</div>'));
       modal.open();
     }
   </script>

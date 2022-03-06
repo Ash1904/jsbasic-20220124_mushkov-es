@@ -23,7 +23,6 @@ export default class Carousel {
 </div>`)
     this.data = slides
     this.onClick()
-    console.log(this.elem.querySelector('.carousel__arrow_left'))
     this.initCarousel()
   }
 
@@ -31,7 +30,7 @@ export default class Carousel {
   createSlides() {
     return this.slide
       .map(slide => {
-        const html = `<div class="carousel__slide" data-id="penang-shrimp">
+        return `<div class="carousel__slide" data-id="penang-shrimp">
     <img src="../../assets/images/carousel/${slide.image
           }" class="carousel__img" alt="slide">
     <div class="carousel__caption">
@@ -42,7 +41,7 @@ export default class Carousel {
       </button>
     </div>
   </div>`;
-        return html;
+         
       })
       .join("");
   }
@@ -53,21 +52,20 @@ export default class Carousel {
     const carouse1Inner = this.elem.querySelector('.carousel__inner');
     arrowLeft.style.display = 'none'
     let counter = 0;
+
     arrowRight.addEventListener('click', () => {
       counter++
-      console.log(counter, counter*988)
-      carouse1Inner.style.transform = `translateX(${counter*(-988)}px)`
+      carouse1Inner.style.transform = `translateX(${counter*(-(carouse1Inner.offsetWidth))}px)`
       if (counter > 0) arrowLeft.style.display = 'block'
       if (counter === this.slide.length - 1) {
         arrowLeft.style.display = 'block'
         arrowRight.style.display = 'none'
-      }
-      
+      } 
       
     })
     arrowLeft.addEventListener('click', () => {
       counter--
-      carouse1Inner.style.transform = `translateX(${counter*(-988)}px)`
+      carouse1Inner.style.transform = `translateX(${counter*(carouse1Inner.offsetWidth)}px)`
       if (counter < this.slide.length) arrowRight.style.display = 'block'
       if (counter === 0) {
         arrowLeft.style.display = 'none'
@@ -79,21 +77,18 @@ export default class Carousel {
   onClick() {
     const btn = this.elem.querySelectorAll('.carousel__button');
     btn.forEach((button, index) => {
-      button.addEventListener('click', (event) => this.createEvent(event,index))
+      button.addEventListener('click', event => this.createEvent(event,index))
 
     })
   }
   createEvent = (event,index) => {
     const target = event.target.closest('img')
-    if (target) {
-        console.log(this.data)
         const productAdd = new CustomEvent('product-add', {
             detail:this.data[index].id,
-            bubbles:true
-            
+            bubbles:true  
         });
         this.elem.dispatchEvent(productAdd);
-    }
+    
 
 }
 }

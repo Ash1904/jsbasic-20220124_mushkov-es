@@ -7,7 +7,7 @@
   <title>Бангкок Экспресс: Лента-Меню</title>
 
   <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="/assets/styles/common.css" />
+  <link rel="stylesheet" href="../../assets/styles/common.css" />
 </head>
 
 <body>
@@ -23,6 +23,11 @@
     let container = document.querySelector('.container');
 
     container.append(ribbon.elem);
+    // ribbon.scroll()
+    document.querySelector('.ribbon__item').classList.add('ribbon__item_active')
+    ribbon.elem.addEventListener('ribbon-select',(event) => {
+      console.log(event.detail)
+    })
   </script>
 </body>
 
