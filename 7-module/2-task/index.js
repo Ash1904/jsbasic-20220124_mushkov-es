@@ -2,7 +2,7 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class Modal {
   constructor() {
-  // this.title = this.setTitle()
+  
 
   this.elem = createElement(`<div class="container">
   <!--Корневой элемент Modal-->
@@ -36,10 +36,7 @@ export default class Modal {
     body.classList.add('is-modal-open')
     body.append(this.elem)
   }
-  // setTitle(title) {
-  //   console.log(title)
-  //   return title
-  // }
+  
   setTitle(title) {
     this.elem.querySelector('.modal__title').textContent = title// textContent стирает старый текст
   }
